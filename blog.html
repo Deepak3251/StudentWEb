@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery</title>
+
+    <link rel="stylesheet" href="project_1.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <nav>
+        <img src="images/logo.svg" alt="">
+
+        <div class="navigation">
+            <ul>
+                <i class="menu-close" class="f">❌</i> <!--Two step-->
+                <li><a href="index.html">Home</a></li>
+                <li><a  href="problog.html">About</a></li>
+                <li><a class="active" href="blog.html">Blog</a></li>
+                <li><a href="course.html">Courses</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <img class="menu-btn" src="images/menu.png" alt="">
+        </div>
+    </nav>
+    <!-- Main Menu  -->
+
+    <section id="about-home">
+        <h1>Blog/</h1>
+    </section>
+
+
+    <section id="blog-container">
+        <div class="blogs">
+            <div class="post">
+                <img src="images/b1.jpg" alt="">
+                <h3>Learn web Development in The Easiest Way</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem asperiores ducimus
+                    voluptate assumenda, beatae ipsa fugiat? Possimus non, unde voluptates explicabo maxime deserunt
+                    quam vero aspernatur pariatur at eaque molestias eos nulla doloribus reiciendis repellat esse
+                    expedita autem iure et! Accusantium provident soluta nesciunt reprehenderit rem, dolor quidem quasi!
+                </p>
+                <a href="post.html">Read More</a>
+            </div>
+
+            <div class="post">
+                <img src="images/b2.jpg" alt="">
+                <h3>Learn web Development in The Easiest Way</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem asperiores ducimus
+                    voluptate assumenda, beatae ipsa fugiat? Possimus non, unde voluptates explicabo maxime deserunt
+                    quam vero aspernatur pariatur at eaque molestias eos nulla doloribus reiciendis repellat esse
+                    expedita autem iure et! Accusantium provident soluta nesciunt reprehenderit rem, dolor quidem quasi!
+                </p>
+                <a href="#">Read More</a>
+            </div>
+
+
+            <div class="post">
+                <img src="images/b3.jpg" alt="">
+                <h3>Learn web Development in The Easiest Way</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem asperiores ducimus
+                    voluptate assumenda, beatae ipsa fugiat? Possimus non, unde voluptates explicabo maxime deserunt
+                    quam vero aspernatur pariatur at eaque molestias eos nulla doloribus reiciendis repellat esse
+                    expedita autem iure et! Accusantium provident soluta nesciunt reprehenderit rem, dolor quidem quasi!
+                </p>
+                <a href="#">Read More</a>
+            </div>
+
+            <div class="post">
+                <img src="images/b4.png" alt="">
+                <h3>Learn web Development in The Easiest Way</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem asperiores ducimus
+                    voluptate assumenda, beatae ipsa fugiat? Possimus non, unde voluptates explicabo maxime deserunt
+                    quam vero aspernatur pariatur at eaque molestias eos nulla doloribus reiciendis repellat esse
+                    expedita autem iure et! Accusantium provident soluta nesciunt reprehenderit rem, dolor quidem quasi!
+                </p>
+                <a href="#">Read More</a>
+            </div>
+
+        </div>
+
+
+        <div class="cate">
+            <h2>Categories</h2>
+            <hr>
+            <a href="#">Web Development</a>
+            <hr>
+            <a href="#">Web Design</a>
+            <hr>
+            <a href="#">App Development</a>
+            <hr>
+            <a href="#">Frontend Web</a>
+            <hr>
+            <a href="#">Python Programming</a>
+            <hr>
+            <a href="#">JavaScript Hack</a>
+            <hr>
+        </div>
+    </section>
+
+
+
+    <footer>
+        <div class="foot-col">
+            <h3>Top Products</h3>
+            <li>Manage Reputation</li>
+            <li>Power Tools</li>
+            <li>Managed WEbsite</li>
+            <li>Marketing Service</li>
+        </div>
+
+        <div class="foot-col">
+            <h3>Top Products</h3>
+            <li>Manage Reputation</li>
+            <li>Power Tools</li>
+            <li>Managed WEbsite</li>
+            <li>Marketing Service</li>
+        </div>
+
+        <div class="foot-col">
+            <h3>Top Products</h3>
+            <li>Manage Reputation</li>
+            <li>Power Tools</li>
+            <li>Managed WEbsite</li>
+            <li>Marketing Service</li>
+        </div>
+
+        <div class="foot-col">
+            <h3>Top Products</h3>
+            <li>Manage Reputation</li>
+            <li>Power Tools</li>
+            <li>Managed WEbsite</li>
+            <li>Marketing Service</li>
+        </div>
+
+        <div class="foot-col">
+            <h3>Newsletter</h3>
+            <p>You can trust us. We only send promo offers,</p>
+            <div class="btn">
+                <input type="text" placeholder="Your Email Address">
+                <a href="" class="yellow">SUBSCRIBE</a>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>copyright @2021 All rights reserved | This template is mabe by Tech2etc</p>
+        </div>
+    </footer>
+
+
+    <script>
+        $(".menu-btn").click(function () {
+            $("nav .navigation ul").addClass('active');
+        })
+
+        $(".menu-close").click(function () {
+            $("nav .navigation ul").removeClass('active')
+        })
+    </script>
+
+
+
+</body>
+
+
+</html>

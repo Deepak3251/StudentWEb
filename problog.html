@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JQuery</title>
+
+    <link rel="stylesheet" href="project_1.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <nav>
+        <img src="images/logo.svg" alt="">
+
+        <div class="navigation">
+            <ul>
+                <i class="menu-close" class="f">❌</i> <!--Two step-->
+                <li><a href="index.html">Home</a></li>
+                <li><a class="active" href="problog.html">About</a></li>
+                <li><a  href="blog.html">Blog</a></li>
+                <li><a href="course.html">Courses</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <img class="menu-btn"src="images/menu.png" alt="">
+        </div>
+    </nav>
+    <!-- Main Menu  -->
+
+    <section id="about-home">
+        <h1>About TEchEduca/</h1>
+    </section>
+
+
+    <section class="about-container">
+
+        <div class="about-img">
+            <img src="images/a.png" alt="">
+        </div>
+
+        <div class="about-text">
+            <h3>Welcome to TeachEduca, Enhance your Skills with best ONline Courses</h3>
+            <p>You can start and finish one of these popular courses in under a day-for free! Check out the list
+                below. Take the course for free</p>
+         
+
+        <div class="about-fe">
+            <img src="images/fe1.png" alt="">
+            <div class="fe-text">
+                <h5>400+ Courses</h5>
+                <p>you can start and finish one of these popular course in under our site</p>
+            </div>
+        </div>
+
+        <div class="about-fe">
+            <img src="images/fe2.png" alt="">
+            <div class="fe-text">
+                <h5>Lifetime Access</h5>
+                <p>you can start and finish one of these popular course in under our site</p>
+            </div>
+        </div>
+    </div>
+
+    </section>
+
+
+
+    <!-- Features  -->
+
+    <section class="features">
+        <h1>Awesome Features</h1>
+        <p>Replenish man have thing gathering lights yieldingshall you </p>
+        <div class="fea-base">
+            <div class="fea-box">
+                <i class="logo">🎗️</i>
+                <h3>Scholership Facility</h3>
+                <p>One make creepeth, man bearing theire firemanment won't great</p>
+            </div>
+
+            <div class="fea-box">
+                <i class="logo">🎗️</i>
+                <h3>Dell Online Courses</h3>
+                <p>One make creepeth, man bearing theire firemanment won't great</p>
+            </div>
+
+            <div class="fea-box">
+                <i class="logo">🎗️</i>
+                <h3>Global certification</h3>
+                <p>One make creepeth, man bearing theire firemanment won't great</p>
+            </div>
+        </div>
+    </section>
+
+    <sction class="about-trust">
+        <h1>Trusted By</h1>
+        <p>Replenish man have thng gathering lights yielding shall you</p>
+        <div class="trust-img">
+            <img src="images/trust (1).png" alt="">
+            <img src="images/trust (2).png" alt="">
+            <img src="images/trust (3).png" alt="">
+            <img src="images/trust (4).png" alt="">
+            <img src="images/trust (5).png" alt="">
+            <img src="images/trust (6).png" alt="">
+        </div>
+    </sction>
+
+
+    <footer>
+        <div class="foot-col">
+            <h3>Top Products</h3>
+            <li>Manage Reputation</li>
+            <li>Power Tools</li>
+            <li>Managed WEbsite</li>
+            <li>Marketing Service</li>
+        </div>
+
+        <div class="foot-col">
+            <h3>Top Products</h3>
+            <li>Manage Reputation</li>
+            <li>Power Tools</li>
+            <li>Managed WEbsite</li>
+            <li>Marketing Service</li>
+        </div>
+
+        <div class="foot-col">
+            <h3>Top Products</h3>
+            <li>Manage Reputation</li>
+            <li>Power Tools</li>
+            <li>Managed WEbsite</li>
+            <li>Marketing Service</li>
+        </div>
+
+        <div class="foot-col">
+            <h3>Top Products</h3>
+            <li>Manage Reputation</li>
+            <li>Power Tools</li>
+            <li>Managed WEbsite</li>
+            <li>Marketing Service</li>
+        </div>
+
+        <div class="foot-col">
+            <h3>Newsletter</h3>
+            <p>You can trust us. We only send promo offers,</p>
+            <div class="btn">
+                <input type="text" placeholder="Your Email Address">
+                <a href="" class="yellow">SUBSCRIBE</a>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>copyright @2021 All rights reserved | This template is mabe by Tech2etc</p>
+        </div>
+    </footer>
+
+
+    <script>
+        $(".menu-btn").click(function () {
+            $("nav .navigation ul").addClass('active');
+        })
+
+        $(".menu-close").click(function () {
+            $("nav .navigation ul").removeClass('active')
+        })
+    </script>
+
+
+
+</body>
+
+
+</html>
