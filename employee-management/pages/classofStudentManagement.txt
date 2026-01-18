@@ -1,0 +1,213 @@
+class StudentManagement{
+
+    private $message="";
+    private $status = "";
+
+    private $action = "";
+
+    public function __construct(){
+        
+        add_action('admin_menu', array($this, "addAdminMenus"));
+
+        add_action("admin_enqueue_scripts", array($this, "addStudentPluginFiles") );
+       
+    }
+
+
+    public function addAdminMenus(){
+
+        //Plugin Menu
+        add_menu_page("Student System", "Student System", "manage_options", "student-system", array($this, "listStudentCallback"), "dashicons-admin-home",23);
+
+        //Plugin submenu
+        add_submenu_page("student-system" , "List Student","List Student", "manage_options","student-system", array($this, "listStudentCallback"));
+
+        //Plugin submenu
+        add_submenu_page("student-system","Add Student","Add Student", "manage_options","add-student", array($this, "addStudentCallback"));
+    }
+
+    //List Student Call back 
+
+    public function listStudentCallback(){
+
+
+   
+
+            if( isset($_GET['action']) && $_GET['action'] == "edit"){
+            $this->action = "edit";
+
+            global $wpdb;
+            
+
+            $student_id = $_GET['id'];
+            $table_prefix = $wpdb->prefix;
+
+            if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['btn_submit'])){
+                $name = sanitize_text_field($_POST['name']);
+                $email = sanitize_text_field($_POST['email']);
+                $gender = sanitize_text_field($_POST['gender']);
+                $phone = sanitize_text_field($_POST['phone']);
+
+                $wpdb->update("{$table_prefix}student_system", array(
+                    "name"=>$name,
+                    "email"=>$email,
+                    "gender"=>$gender,
+                    "Phone_no" => $phone
+                ),array(
+                    "id" =>$student_id
+                ));
+
+                $this->message="Student updated successfully";
+
+            }
+
+
+
+
+            $student = $this ->getStudentData($student_id);
+            $displayMessage = $this->message;
+           
+                $action = $this->action;
+
+            include_once SMS_PLUGIN_PATH.'pages/add-student.php';
+
+
+             
+
+        }else{
+
+            global $wpdb;
+        $prefix = $wpdb->prefix;
+
+        $students=$wpdb->get_results("SELECT * FROM {$prefix}student_system", ARRAY_A);
+
+
+        include_once SMS_PLUGIN_PATH.'pages/list-student.php';
+        }
+    }
+
+    public function addStudentCallback(){
+
+
+        //form submission code 
+        if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['btn_submit'])){
+
+            $this ->saveStudentFormData();
+         }     
+
+         $displayMessage = $this->message;
+         $displayStatus = $this->status;
+                
+        include_once SMS_PLUGIN_PATH.'pages/add-student.php';
+
+    }
+
+    //Return Student Data
+    private function getStudentData($student_id){
+
+        global $wpdb;
+        $table_prefix = $wpdb->prefix;
+         $student = $wpdb->get_row(
+                $wpdb->prepare("SELECT * FROM {$table_prefix}student_system WHERE id=%d", $student_id),ARRAY_A);
+
+                return $student;
+    }
+
+    //Save Form Student DAta 
+    private function saveStudentFormData(){
+         global $wpdb;
+
+
+           $name = sanitize_text_field($_POST['name']);
+           $email = sanitize_text_field($_POST['email']);
+           $gender = sanitize_text_field($_POST['gender']);
+           $phone = sanitize_text_field($_POST['phone']);
+
+           $table_prefix=$wpdb->prefix;
+
+           $wpdb->insert("{$table_prefix}student_system", array(
+
+            "name"=>$name,
+            "email" => $email,
+            "gender" => $gender,
+            "Phone_no" => $phone
+           ));
+
+           $student_id=$wpdb->insert_id;
+
+           if($student_id > 0){
+            //save data
+            $this->message = " Data Save Succesfully";
+            $this->status=1;
+
+
+           }else{
+            //failed to save data
+            $this->message = "Faild to Save Data";
+            $this->status = 0;
+           }
+
+    }
+
+
+    //Create Table function
+    public function createStudentTable(){
+
+        global $wpdb;
+
+        $prefix = $wpdb->prefix;
+
+
+        $sql = "
+                CREATE TABLE `{$prefix}student_system` (
+        `id` int(5) NOT NULL AUTO_INCREMENT,
+        `name` varchar(50) NOT NULL,
+        `email` varchar(80) NOT NULL,
+        `gender` enum('male','female','others') DEFAULT NULL,
+        `Phone_no` varchar(25) DEFAULT NULL,
+        `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+        PRIMARY KEY (`id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
+
+        include_once ABSPATH. "wp-admin/includes/upgrade.php";
+        dbDelta($sql);
+        
+
+    }
+
+//Drop Student Table 
+    public function dropTable(){
+
+        global $wpdb;
+
+        $prefix = $wpdb->prefix;
+
+        $sql = "DROP TABLE IF EXISTS {$prefix}student_system";
+
+        $wpdb->query($sql);
+
+
+    }
+
+    // Add Plugin File
+
+    public function addStudentPluginFiles(){
+
+        //Style
+        wp_enqueue_style("datatable-css", SMS_PLUGIN_URL."assets/css/jquery.dataTables.dataTables.min" , array() , "1.0.0", "all");
+        wp_enqueue_style("custom-css", SMS_PLUGIN_URL."assets/css/custom.css" , array() , "1.0.0", "all");
+        wp_enqueue_style("liststudent-css", SMS_PLUGIN_URL."assets/css/list-student.css" , array() , "1.0.0", "all");
+        wp_enqueue_style("bootstrap-css", SMS_PLUGIN_URL."assets/css/bootstrap.min.css", array(), "1.0.0", "all");
+
+        //Script
+        wp_enqueue_script("datatable-css", SMS_PLUGIN_URL."assets/js/dataTables.min.js" , array("jquery") , "1.0.0", "all");
+        wp_enqueue_script("custom-css", SMS_PLUGIN_URL."assets/js/script.js" , array("jquery") , "1.0.0", "all");
+        
+
+    }
+
+
+}
+     
+        
+        
